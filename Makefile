@@ -4,10 +4,10 @@ CC=gcc
 CFLAGS=-g -Wall
 OBJFILES = src/filesystem.o src/extractor.o
 
-all: clean $(TARGET)
+all: $(TARGET)
 
 $(TARGET): $(OBJFILES)
 	$(CC) $(CFLAGS) -o $(TARGET) $(OBJFILES) $(LDFLAGS)
 
 clean:
-	rm -rf src/*.o $(TARGET) game_package
+	rm -rf src/*.o $(TARGET).exe game_package

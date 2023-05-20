@@ -9,7 +9,7 @@ Unofficial tool to inspect Foundation game packages.
 3. Run PowerShell in the sources folder and execute `make`. It should produce an `extractor.exe` file
     a. If it doesn't work, try with `mingw32-make.exe` and make sure you configured your Environment Variables, or just use full path, like `C:\MinGW\bin\mingw32-make.exe`
 4. Copy `game.package` or any other package in the same folder
-5. Run from PowerShell the following command: `./extractor.exe game.package`
+5. Run from PowerShell the following command: `.\extractor.exe game.package`
 6. All files will be placed in the `game-package` folder
 
 ## Disclaimer

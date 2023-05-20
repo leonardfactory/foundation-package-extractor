@@ -27,8 +27,13 @@ int main(int argc, char **argv) {
     char *folder_name = get_dest_folder(argv[1]);
     printf("Start extraction of '%s' in '%s'...\n", argv[1], folder_name);
     if (mkdir(folder_name) != 0) {
-        printf("An error occurred while creating dest folder '%s'\n", folder_name);
-        perror("Error");
+        if (errno != EEXIST) {
+            printf("An error occurred while creating dest folder '%s'\n", folder_name);
+            perror("Error");
+            return 1;
+        }
+
+        printf("Dest folder '%s' already exists, please delete it and try again.\n", folder_name);
         return 1;
     }
 
