@@ -8,6 +8,7 @@
 #include "filesystem.h"
 
 void process_children(FILE *package, uint32_t data_offset, uint32_t children_count, uint32_t depth);
+void process_file(FILE *package, char *file_name, uint32_t data_offset, uint32_t depth);
 
 int main(int argc, char **argv) {
     // Check for arguments
@@ -41,7 +42,7 @@ int main(int argc, char **argv) {
     uint32_t version_number = read_uint32(package);
     printf("(Version number: %d)\n", version_number);
 
-    uint8_t uuid[33];
+    char uuid[33];
     read_string(uuid, 32, package);
     printf("(UUID: %s)\n", uuid);
 
@@ -82,7 +83,7 @@ void process_children(FILE *package, uint32_t data_offset, uint32_t count, uint3
 void process_file(FILE *package, char *file_name, uint32_t data_offset, uint32_t depth) {
     uint64_t file_offset = read_uint64(package); 
     uint64_t file_size = read_uint64(package);
-    printf("%*s%s (%d bytes)\n", depth * 4, "", file_name, file_size);
+    printf("%*s%s (%lld bytes)\n", depth * 4, "", file_name, file_size);
 
     int64_t saved_position = ftell64(package);
     uint64_t final_start_offset = (uint64_t)data_offset + file_offset;
@@ -90,7 +91,7 @@ void process_file(FILE *package, char *file_name, uint32_t data_offset, uint32_t
     
     uint8_t *buffer = malloc(file_size);
     if (fread(buffer, file_size, 1, package) != 1 && file_size > 0) {
-        printf("An error occurred while reading File '%s' buffer (Offset 0x%08X)\n", file_name, file_offset);
+        printf("An error occurred while reading File '%s' buffer (Offset 0x%08llX)\n", file_name, file_offset);
         perror("Error");
         exit(1);
     }

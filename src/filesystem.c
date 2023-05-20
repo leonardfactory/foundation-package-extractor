@@ -74,8 +74,8 @@ uint64_t read_uint64(FILE *file) {
 /**
  * Reads a char (uint8_t) string from a file.
  */ 
-void read_string(uint8_t* buffer, size_t len, FILE *file) {
-    if (fread(buffer, sizeof(uint8_t), len, file) != len) {
+void read_string(char* buffer, size_t len, FILE *file) {
+    if (fread(buffer, sizeof(char), len, file) != len) {
         perror("Error while reading string");
         exit(1);
     }
