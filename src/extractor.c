@@ -79,8 +79,9 @@ void process_file(FILE *package, char *file_name, uint32_t data_offset, uint32_t
     uint64_t file_size = read_uint64(package);
     printf("%*s%s (%d bytes)\n", depth * 4, "", file_name, file_size);
 
-    int64_t saved_position = ftell(package);
-    fseek(package, data_offset + file_offset, SEEK_SET);
+    int64_t saved_position = ftell64(package);
+    uint64_t final_start_offset = (uint64_t)data_offset + file_offset;
+    fseek64(package, final_start_offset, SEEK_SET);
     
     uint8_t *buffer = malloc(file_size);
     if (fread(buffer, file_size, 1, package) != 1 && file_size > 0) {
@@ -95,6 +96,6 @@ void process_file(FILE *package, char *file_name, uint32_t data_offset, uint32_t
 
     free(buffer);
     // Reset file position
-    fseek(package, saved_position, SEEK_SET);
+    fseek64(package, saved_position, SEEK_SET);
 }
 

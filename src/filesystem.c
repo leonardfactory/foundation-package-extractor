@@ -81,3 +81,22 @@ void read_string(uint8_t* buffer, size_t len, FILE *file) {
     }
     buffer[len] = 0;
 }
+
+/**
+ * Portable fseek in 64bit for Win32 & Unix
+ */
+int fseek64(FILE *file, uint64_t offset, int origin) {
+    #ifdef _WIN32
+        return _fseeki64(file, offset, origin);
+    #else
+        return fseeko(file, offset, origin);
+    #endif
+}
+
+int64_t ftell64(FILE *file) {
+    #ifdef _WIN32
+        return _ftelli64(file);
+    #else
+        return ftello(file);
+    #endif
+}
