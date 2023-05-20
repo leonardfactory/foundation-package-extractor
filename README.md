@@ -4,11 +4,10 @@ Unofficial tool to inspect Foundation game packages.
 
 ## Usage
 
-1. Download latest release from [Releases](https://github.com/leonardfactory/foundation-package-extractor/releases)
-2. Extract the zip
-3. Copy `game.package` or any other package in the same folder
-4. Run from Command Prompt / PowerShell the following command: `./extractor.exe game.package`
-5. All files will be placed in the `game-package` folder
+1. Download latest release ("extractor.exe") from [Releases](https://github.com/leonardfactory/foundation-package-extractor/releases)
+2. Copy `game.package` or any other package in the same folder
+3. Run from Command Prompt / PowerShell the following command: `./extractor.exe game.package`
+4. All files will be placed in the `game-package` folder
 
 ## Disclaimer
 
