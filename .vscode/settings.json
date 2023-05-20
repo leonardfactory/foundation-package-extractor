@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "*.json": "jsonc",
+        ".clang-format": "yaml",
+        "stat.h": "c",
+        "stdbool.h": "c",
+        "filesystem.h": "c",
+        "chrono": "c",
+        "system_error": "c",
+        "xlocale": "c"
+    }
+}
