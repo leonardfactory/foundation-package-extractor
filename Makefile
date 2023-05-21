@@ -10,4 +10,4 @@ $(TARGET): $(OBJFILES)
 	$(CC) $(CFLAGS) -o $(TARGET) $(OBJFILES) $(LDFLAGS)
 
 clean:
-	rm -rf src/*.o $(TARGET).exe game_package
+	rm -rf src/*.o $(TARGET).exe
